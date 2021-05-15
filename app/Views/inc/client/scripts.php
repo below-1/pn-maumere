@@ -1,0 +1,12 @@
+<script src="/client/vendor/jquery/jquery.min.js"></script>
+<script src="/client/vendor/popper.js/umd/popper.min.js"> </script>
+<script src="/client/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/client/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="/client/vendor/waypoints/lib/jquery.waypoints.min.js"> </script>
+<script src="/client/vendor/jquery.counterup/jquery.counterup.min.js"> </script>
+<script src="/client/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="/client/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
+<script src="/client/js/jquery.parallax-1.1.3.js"></script>
+<script src="/client/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="/client/vendor/jquery.scrollto/jquery.scrollTo.min.js"></script>
+<script src="/client/js/front.js"></script>
