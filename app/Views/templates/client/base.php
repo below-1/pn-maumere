@@ -3,11 +3,18 @@
   <head>
     <?= $this->include('inc/client/header') ?>
   </head>
-  <body>
-    <div id="all">
+
+  <body class="antialiased">
+    <div class="page">
       <?= $this->include('inc/client/top-bar') ?>
       <?= $this->include('inc/client/nav-bar') ?>
-      <?= $this->renderSection('content') ?>
+
+      <div class="content">
+        <div class="container-xl">
+          <?= $this->renderSection('content') ?>
+          <?= $this->include('inc/client/footer') ?>
+        </div>
+      </div>
     </div>
 
     <?= $this->include('inc/client/scripts') ?>

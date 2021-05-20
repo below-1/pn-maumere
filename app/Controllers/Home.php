@@ -45,7 +45,6 @@ class Home extends BaseController {
     $data['zis'] = $zis;
     $data['infoPubliks'] = $infoPubliks;
     $data['sidangs'] = $sidangs;
-    die($this->input->get('color_id', TRUE));
 		return view('pages/client/home', $data);
 	}
 }
