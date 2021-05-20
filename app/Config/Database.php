@@ -31,23 +31,23 @@ class Database extends Config
 	 * @var array
 	 */
 	public $default = [
-		'DSN'      => '',
+		'DSN'      => 'pgsql:host=127.0.0.1;port=5432;dbname=pn_maumere_db;user=postgres',
 		'hostname' => 'localhost',
-		'username' => '',
+		'username' => 'postgres',
 		'password' => '',
-		'database' => '',
-		'DBDriver' => 'MySQLi',
-		'DBPrefix' => '',
-		'pConnect' => false,
+		'database' => 'pn_maumere_db',
+		'DBDriver' => 'Postgre',
+		// 'DBPrefix' => '',
+		// 'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
-		'charset'  => 'utf8',
-		'DBCollat' => 'utf8_general_ci',
-		'swapPre'  => '',
-		'encrypt'  => false,
-		'compress' => false,
-		'strictOn' => false,
-		'failover' => [],
-		'port'     => 3306,
+		// 'charset'  => 'utf8',
+		// 'DBCollat' => 'utf8_general_ci',
+		// 'swapPre'  => '',
+		// 'encrypt'  => false,
+		// 'compress' => false,
+		// 'strictOn' => false,
+		// 'failover' => [],
+		'port'     => 5432,
 	];
 
 	/**
