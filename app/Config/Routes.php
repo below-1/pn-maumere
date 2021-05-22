@@ -33,6 +33,13 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/admin', 'Admin\Home::index', ['as' => 'admin_home']);
+
+$routes->get('/admin/media/(:alpha)', 'Admin\AdMedia::list/$1', ['as' => 'admin_media_list']);
+$routes->get('/admin/media/(:alpha)/(:alpha)/new', 'Admin\AdMedia::create_form/$1/$2', ['as' => 'form_create_media']);
+$routes->get('/admin/media/(:alpha)/(:num)/update_info', 'Admin\AdMedia::update_form/$1/$2', ['as' => 'form_update_media_info']);
+$routes->post('/admin/media/(:alpha)/(:alpha)', 'Admin\AdMedia::create/$1/$2',['as' => 'create_media']);
+
 $routes->get('(:any)', 'Pages::view/$1');
 
 /*

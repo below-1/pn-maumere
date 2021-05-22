@@ -18,6 +18,11 @@ class Home extends BaseController {
       ->get()
       ->getCustomResultObject('App\Entities\Media');
 
+    $roleModels = $mediaModel->builder()
+      ->where("'agen-perubahan' = any(tags)")
+      ->get()
+      ->getCustomResultObject('App\Entities\Media');
+
     $externalWebs = $mediaModel->builder()
       ->where("'external-web' = any(tags)")
       ->limit(10)
@@ -45,6 +50,7 @@ class Home extends BaseController {
     $data['zis'] = $zis;
     $data['infoPubliks'] = $infoPubliks;
     $data['sidangs'] = $sidangs;
+    $data['roleModels'] = $roleModels;
 		return view('pages/client/home', $data);
 	}
 }
