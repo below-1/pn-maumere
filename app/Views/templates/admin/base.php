@@ -6,7 +6,7 @@
   </head>
 
   <body class="antialiased">
-    <div class="page">
+    <div class="page" id="main-app">
       <?= $this->include('inc/admin/top-bar') ?>
       <?= $this->include('inc/admin/nav-bar') ?>
 

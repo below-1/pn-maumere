@@ -5,7 +5,7 @@
   </head>
 
   <body class="antialiased">
-    <div class="page">
+    <div class="page" id="main-app">
       <?= $this->include('inc/client/top-bar') ?>
       <?= $this->include('inc/client/nav-bar') ?>
 
@@ -18,5 +18,6 @@
     </div>
 
     <?= $this->include('inc/client/scripts') ?>
+    <?= $this->renderSection('scripts') ?>
   </body>
 </html>
