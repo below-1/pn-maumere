@@ -6,25 +6,25 @@
 
 <?= $this->section('page-header') ?>
 <div class="page-header d-print-none">
-    <div class="row align-items-center">
-      <div class="col">
-        <!-- Page pre-title -->
-        <div class="page-pretitle">
-          Artikel
-        </div>
-        <h2 class="page-title">
-          Tulis Artikel
-        </h2>
+  <div class="row align-items-center">
+    <div class="col">
+      <!-- Page pre-title -->
+      <div class="page-pretitle">
+        Artikel
       </div>
-      <div class="col-auto ms-auto d-print-none">
-        <div class="d-flex">
-          <button class="btn btn-primary" @click="save">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-            Simpan
-          </button>
-        </div>
+      <h2 class="page-title">
+        Tulis Artikel
+      </h2>
+    </div>
+    <div class="col-auto ms-auto d-print-none">
+      <div class="d-flex">
+        <button class="btn btn-primary" @click="save">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+          Simpan
+        </button>
       </div>
     </div>
+  </div>
 </div>
 <?= $this->endSection() ?>
 
@@ -35,7 +35,7 @@
         id="article_form"
         method="post" 
         enctype="multipart/form-data" 
-        action="/admin/article/new?tag=<?= $tag ?>" class="card">
+        action="/admin/article/new" class="card">
         <div class="card-body">
           <div class="mb-3">
             <label class="form-label">Judul</label>
@@ -53,6 +53,23 @@
               accept=".gif,.jpg,.jpeg,.png"
               class="form-control"
             >
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Kategori</label>
+            <?php foreach ($options_tags as $tag): ?>
+              <div class="form-check">
+                <input name="tags[]" class="form-check-input" type="checkbox" 
+                  value="<?= $tag['name']?>"
+                  <?php if ($tag['selected']): ?>
+                    checked
+                  <?php endif; ?>
+                >
+                <label class="form-check-label">
+                  <?= $tag['label']?>
+                </label>
+              </div>
+            <?php endforeach ?>
           </div>
 
           <input 
