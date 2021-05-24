@@ -2,7 +2,7 @@
 
 namespace App\Entities;
 
-use CodeIgniter\Entity;
+use CodeIgniter\Entity\Entity;
 
 class Media extends Entity {
   protected $casts = [

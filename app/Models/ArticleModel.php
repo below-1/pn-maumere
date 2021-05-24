@@ -9,4 +9,5 @@ class ArticleModel extends Model {
     protected $allowedFields = [
       'tags', 'content', 'title', 'description', 'slug', 'published', 'avatar'
     ];
+    protected $returnType = 'App\Entities\Article';
 }

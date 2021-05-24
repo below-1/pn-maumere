@@ -8,8 +8,6 @@ use App\Entities\Article;
 use App\Libraries\Paging;
 use App\Libraries\MediaBuilder;
 
-
-
 class AdArticle extends BaseController {
 
   protected $tags = array(
@@ -31,6 +29,10 @@ class AdArticle extends BaseController {
     )
   );
 
+  public function __construct () {
+    $this->model = new ArticleModel();
+  }
+
   public function index() {
     $model = new ArticleModel();
     $tags = get_or_default($this->request, 'tags[]', []);
@@ -47,15 +49,22 @@ class AdArticle extends BaseController {
       $qsNewDefaultTags = http_build_query([ 'tags' => $tags ]);
       $builder = $builder->where("$stringTags <@ \"tags\"", null, false);
     }
+    $totalData = $builder->countAllResults(false);
     $items = $builder
       ->limit($perPage, $offset)
       ->get()
       ->getCustomResultObject('App\Entities\Article');
-    $totalData = $builder->countAllResults();
+
+    // assign formatted date 
+    $item = array_map(function ($item) {
+      $item->formatted_created_at = $item->created_at->toLocalizedString('HH:mm MMMM d, yyy');
+      $item->humanized_created_at = $item->created_at->humanize();
+      return $item;
+    }, $items);
+
     $totalPage = $totalData / $perPage;
     $paging = new Paging();
     $meta = $paging->create($perPage, $page, $totalData, null, 10);
-    // die('here');
     $data = [
         'items' => $items,
         'pagination' => $meta,
@@ -109,16 +118,60 @@ class AdArticle extends BaseController {
     ]);
   }
 
-  public function update ($id) {
+  public function update_content ($id) {
+    $tags = $this->request->getVar('tags');
+    $title = $this->request->getVar('title');
+    $content = $this->request->getVar('content');
+    $description = $this->request->getVar('description');
+    $slug = url_title($title, '-', TRUE);
 
+    $article = $this->model->find($id);
+    $article->tags = $tags;
+    $article->slug = $slug;
+    $article->description = $description;
+    $article->content = $content;
+
+    $model = new ArticleModel();
+    $model->update($id, $article);
+    return redirect()->to('/admin/article');
   }
 
-  public function update_form ($id) {
-
+  public function update_content_form ($id) {
+    $article = $this->model->find($id);
+    return view('/pages/admin/article/update_content', [
+      'item' => $article,
+      'options_tags' => $this->map_selected_tags($article->tags)
+    ]);
   }
 
   public function remove ($id) {
     
+  }
+
+  public function upload_image ($id) {
+    $model = new ArticleModel();
+    $article = $model->find($id);
+    $file = $this->request->getFile('avatar');
+
+    if (!$file->isValid()) {
+      throw new \RuntimeException($file->getErrorString().'('.$file->getError().')');
+    }
+
+    if (isset($article->avatar) && starts_with($article->avatar, '/')) {
+      $avatar = $article->avatar;
+      // Remove leading slash;
+      $path = substr($article->avatar, 1, strlen($article->avatar));
+      $fullPath = ROOTPATH .  'public' . DIRECTORY_SEPARATOR . $path;
+      helper('filesystem');
+      delete_files($fullPath);
+    }
+    $newName = $file->getRandomName();
+    $newPath = implode(DIRECTORY_SEPARATOR, [ ROOTPATH, 'public', 'uploads' ]);
+    $file->move($newPath, $newName);
+    $url = '/' . implode('/', [ 'uploads', $newName ]);
+    $article->avatar = $url;
+    $model->update($id, $article);
+    return redirect()->to('/admin/article');
   }
 
   protected function map_selected_tags ($tags) {

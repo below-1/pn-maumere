@@ -17,3 +17,7 @@ function pg_array ($arr, $type = 'text') {
   }, $arr);
   return 'array[' . implode(',', $wrapped) . ']';
 }
+
+function starts_with ($xs, $ys) {
+  return substr($xs, 0, strlen($ys)) == $ys;
+}
