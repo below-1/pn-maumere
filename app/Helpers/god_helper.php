@@ -21,3 +21,7 @@ function pg_array ($arr, $type = 'text') {
 function starts_with ($xs, $ys) {
   return substr($xs, 0, strlen($ys)) == $ys;
 }
+
+function str_contains($haystack, $needle) {
+  return $needle !== '' && mb_strpos($haystack, $needle) !== false;
+}

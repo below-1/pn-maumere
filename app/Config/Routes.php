@@ -82,6 +82,11 @@ $routes->get('/admin/media/(:num)/update_content', 'Admin\AdMedia::update_conten
 $routes->post('/admin/media/(:num)/update_content', 'Admin\AdMedia::update_content/$1');
 $routes->post('/admin/media/(:num)/update_file', 'Admin\AdMedia::update_file/$1');
 $routes->get('/admin/media/(:num)/delete', 'Admin\AdMedia::remove/$1');
+$routes->get('/admin/sidang', 'Admin\AdSidang::index');
+$routes->get('/admin/sidang/new', 'Admin\AdSidang::create_form');
+$routes->post('/admin/sidang/new', 'Admin\AdSidang::create');
+$routes->get('/admin/sidang/(:num)/update', 'Admin\AdSidang::update_form/$1');
+$routes->post('/admin/sidang/(:num)/update', 'Admin\AdSidang::update/$1');
 // $routes->get('/admin/media/(:alpha)', 'Admin\AdMedia::list/$1', ['as' => 'admin_media_list']);
 // $routes->get('/admin/media/(:alpha)/(:alpha)/new', 'Admin\AdMedia::create_form/$1/$2', ['as' => 'form_create_media']);
 // $routes->get('/admin/media/(:alpha)/(:num)/update_info', 'Admin\AdMedia::update_form/$1/$2', ['as' => 'form_update_media_info']);

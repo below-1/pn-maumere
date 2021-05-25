@@ -15,7 +15,7 @@ class MediaBuilder {
     protected function ew ($data) {
         return [
             'title' => $data['title'],
-            'description' => $data['description']
+            'target' => $data['target']
         ];
     }
 
@@ -50,6 +50,8 @@ class MediaBuilder {
                 return $this->zi($data);
             case 'agen-perubahan':
                 return $this->ap($data);
+            case 'info-publik':
+                return $this->ip($data);
             default:
                 throw new Exception("Error: Unknown tag ($tag)", 1);
         }
