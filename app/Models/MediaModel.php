@@ -9,4 +9,5 @@ class MediaModel extends Model {
     protected $allowedFields = [
       'tags', 'metadata', 'tipe', 'url'
     ];
+    protected $returnType = 'App\Entities\Media';
 }

@@ -75,6 +75,13 @@ $routes->get('/admin/article/(:num)/update_content', 'Admin\AdArticle::update_co
 $routes->post('/admin/article/(:num)/update_content', 'Admin\AdArticle::update_content/$1');
 $routes->post('/admin/article/(:num)/upload_image', 'Admin\AdArticle::upload_image/$1');
 $routes->get('/admin/upload_file', 'Admin\Home::upload_file_form');
+$routes->get('/admin/media/(:alpha)/(:segment)/new', 'Admin\AdMedia::create_form/$1/$2');
+$routes->post('/admin/media/(:alpha)/(:segment)/new', 'Admin\AdMedia::create/$1/$2');
+$routes->get('/admin/media', 'Admin\AdMedia::index');
+$routes->get('/admin/media/(:num)/update_content', 'Admin\AdMedia::update_content_form/$1');
+$routes->post('/admin/media/(:num)/update_content', 'Admin\AdMedia::update_content/$1');
+$routes->post('/admin/media/(:num)/update_file', 'Admin\AdMedia::update_file/$1');
+$routes->get('/admin/media/(:num)/delete', 'Admin\AdMedia::remove/$1');
 // $routes->get('/admin/media/(:alpha)', 'Admin\AdMedia::list/$1', ['as' => 'admin_media_list']);
 // $routes->get('/admin/media/(:alpha)/(:alpha)/new', 'Admin\AdMedia::create_form/$1/$2', ['as' => 'form_create_media']);
 // $routes->get('/admin/media/(:alpha)/(:num)/update_info', 'Admin\AdMedia::update_form/$1/$2', ['as' => 'form_update_media_info']);
