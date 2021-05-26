@@ -5,16 +5,21 @@
 
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="height: 400px;">
         <div class="carousel-inner text-white">
-          <div class="carousel-item active" style="height: 400px; background: url(/static/photos/bg2.jpg);">
-            <div class="row h-100">
-              <div  class="col d-flex align-items-center justify-content-center">
-                <h3>Foobar</h3>
-              </div>
-              <div  class="col d-flex align-items-center justify-content-center">
-                <img src="/static/photos/1b73704b282a8ec6.jpg" class="d-block" height="100" width="100" / >
+          <?php foreach ($carousels as $index => $item): ?>
+            <div 
+              class="carousel-item <?php if ($index == 0): ?> active <?php endif; ?>" 
+              style="height: 400px; background: url(/static/photos/bg2.jpg);">
+              <div class="row h-100">
+                <div  class="col d-flex flex-column align-items-start justify-content-center">
+                  <h3><?= $item->metadata->title ?></h3>
+                  <h5><?= $item->metadata->description ?></h5>
+                </div>
+                <div  class="col d-flex align-items-center justify-content-center">
+                  <img src="<?= $item->url ?>" class="d-block" height="100" width="100" / >
+                </div>
               </div>
             </div>
-          </div>
+          <?php endforeach; ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
