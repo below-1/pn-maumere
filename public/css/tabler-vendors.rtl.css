@@ -1,11 +1,3 @@
-/*!
-* Tabler v1.0.0-beta (https://tabler.io)
-* @version 1.0.0-beta
-* @link https://tabler.io
-* Copyright 2018-2021 The Tabler Authors
-* Copyright 2018-2021 codecalm.net Paweł Kuna
-* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
-*/
 /*! nouislider - 14.7.0 - 4/6/2021 */
 /* Functional styling;
  * These styles are required for noUiSlider to function.
@@ -309,7 +301,7 @@
   box-shadow: none;
   background: none;
   border-radius: 0;
-  color: #9a2109; }
+  color: #8b0703; }
 
 .noUi-horizontal {
   height: 1.25rem;
@@ -336,7 +328,7 @@
     left: -0.5rem;
     margin: 1px 0 0 1px; }
   .noUi-handle.noUi-active, .noUi-handle:focus {
-    box-shadow: 0 0 0 1px #f4f6fa, 0 0 0 0.25rem rgba(154, 33, 9, 0.25); }
+    box-shadow: 0 0 0 1px #f4f6fa, 0 0 0 0.25rem rgba(139, 7, 3, 0.25); }
 
 .noUi-connect {
   background: currentColor; }
@@ -345,11 +337,11 @@
   --litepicker-month-weekday-color: #656d77;
   --litepicker-button-prev-month-color: #656d77;
   --litepicker-button-next-month-color: #656d77;
-  --litepicker-button-prev-month-color-hover: #9a2109;
-  --litepicker-button-next-month-color-hover: #9a2109;
-  --litepicker-day-color-hover: #9a2109;
-  --litepicker-is-end-color-bg: #9a2109;
-  --litepicker-is-today-color: #9a2109;
+  --litepicker-button-prev-month-color-hover: #8b0703;
+  --litepicker-button-next-month-color-hover: #8b0703;
+  --litepicker-day-color-hover: #8b0703;
+  --litepicker-is-end-color-bg: #8b0703;
+  --litepicker-is-today-color: #8b0703;
   font: inherit;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -703,8 +695,8 @@
   .choices:after {
     content: none !important; }
   .choices.is-focused .form-select {
-    border-color: #cd9084;
-    box-shadow: 0 0 0 0.25rem rgba(154, 33, 9, 0.25); }
+    border-color: #c58381;
+    box-shadow: 0 0 0 0.25rem rgba(139, 7, 3, 0.25); }
   .choices .dropdown-menu {
     width: 100%;
     height: auto; }
@@ -718,7 +710,7 @@
         background: transparent;
         color: inherit; }
       .choices .dropdown-menu .dropdown-item.is-highlighted {
-        color: #9a2109;
+        color: #8b0703;
         background-color: rgba(154, 33, 9, 0.06); }
 
 .choices__placeholder {
