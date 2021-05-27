@@ -85,6 +85,7 @@ class Database extends Config
 		$this->default['hostname'] = getenv('database.default.hostname');
 		$this->default['username'] = getenv('database.default.username');
 		$this->default['database'] = getenv('database.default.database');
+		$this->default['password'] = getenv('database.default.password');
 		$this->default['port'] = intval(getenv('database.default.database'));
 		$this->default['DBDriver'] = getenv('database.default.DBDriver');
 		// Ensure that we always set the database group to 'tests' if
