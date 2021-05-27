@@ -31,7 +31,7 @@ class Database extends Config
 	 * @var array
 	 */
 	public $default = [
-		'DSN'      => 'pgsql:host=127.0.0.1;port=5432;dbname=pn_maumere_db;user=postgres',
+		// 'DSN'      => 'pgsql:host=127.0.0.1;port=5432;dbname=pn_maumere_db;user=postgres',
 		'hostname' => 'localhost',
 		'username' => 'postgres',
 		'password' => '',
@@ -82,6 +82,11 @@ class Database extends Config
 	{
 		parent::__construct();
 
+		$this->default['hostname'] = getenv('database.default.hostname');
+		$this->default['username'] = getenv('database.default.username');
+		$this->default['database'] = getenv('database.default.database');
+		$this->default['port'] = intval(getenv('database.default.database'));
+		$this->default['DBDriver'] = getenv('database.default.DBDriver');
 		// Ensure that we always set the database group to 'tests' if
 		// we are currently running an automated test suite, so that
 		// we don't overwrite live data on accident.
@@ -89,6 +94,7 @@ class Database extends Config
 		{
 			$this->defaultGroup = 'tests';
 		}
+
 	}
 
 	//--------------------------------------------------------------------
